@@ -24,8 +24,7 @@ public interface TmsFilesRepository extends JpaRepository<TmsBoletosCentral, Str
 			+ "	SET \"COBRADO\"=?1\r\n"
 			+ "	WHERE \"ADICIONAL2\"=?2", nativeQuery=true)
 	public Integer actualizarCobros(String COBRADO, String ADICIONAL2);
-	
-	
+
 	/*@Modifying
     @Transactional
     @Query("UPDATE TmsBoletosCentral T SET T.COBRADO = 'N' WHERE T.ADICIONAL2 IN :adicional2List")
