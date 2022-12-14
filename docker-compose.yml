@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  oracle-database:
+    image:  oraclelinux
+    container_name: oracle-database
+    environment:
+      - ORACLE_ROOT_PASSWORD=pcentral
+      - ORACLE_DATABASE=jdbc:oracle:thin:@192.168.16.23:1521:qatmscapu
+      - ORACLE_USER =pcentral
+      - ORACLE_PASSWORD=pcentral
+  spring-docker-container:
+    image: spring-boot-docker-container
+    container_name: springboot-docker-container
+    ports:
+      - 8090:8090
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - oracle-database
